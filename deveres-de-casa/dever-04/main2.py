@@ -17,11 +17,14 @@ Tips:
 3. You can use the math library to calculate the close formula.
 """
 
-def F(n):
+def F_closed(n):
+    return 13 * (1 << (n - 1)) - n*n - 4*n - 6
+
+def F_recursive(n):
     if n == 1:
         return 2
-    return 2 * F(n - 1) + n * n
-
+    return 2 * F_recursive(n - 1) + n*n
 
 n = int(input("Enter a value for n: "))
-print(f"F({n}) = {F(n)}")
+print(f"F({n}) using formula = {F_closed(n)}")
+print(f"F({n}) using recursion = {F_recursive(n)}")
